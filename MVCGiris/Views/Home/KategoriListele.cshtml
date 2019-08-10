@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MVCGiris.Models.KategoriModel>
+
+@{
+    ViewBag.Title = "KategoriListele";
+}
+
+<h2>Kategoriler</h2>
+
+<p>
+    
+    <a href="/Home/KategoriEkle/">Yeni Kategori Ekle</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori)
+        </td>
+        <td>
+            <a title="Sil" class="btn btn-danger btn-circle" href="@Url.Action("KategoriSil", new { id = item.KategoriId })"><i class="fas fa-trash"></i> </a>
+        </td>
+    </tr>
+}
+
+</table>

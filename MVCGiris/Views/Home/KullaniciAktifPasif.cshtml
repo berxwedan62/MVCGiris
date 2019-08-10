@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MVCGiris.Models.IndexModel>
+
+@{
+    ViewBag.Title = "KullaniciAktifPasif";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kullanici Aktif/Pasif</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.userName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userPw)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.aktif)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userPw)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.aktif)
+                </td>
+                <td>
+                    @*@Html.ActionLink("Aktif", "Aktif3", new { id = item.id }) |
+                    @Html.ActionLink("Pasif", "Pasif3", new { id = item.id }) |
+                    @Html.ActionLink("Sil", "Sil2", new { id = item.id })*@
+
+
+                    <a title="Aktif" class="btn btn-success btn-circle" href="@Url.Action("Aktif3", new { id = item.id })"><i class="fas fa-check"></i> </a>
+                    <a title="Pasif" class="btn btn-warning btn-circle" href="@Url.Action("Pasif3", new { id = item.id })"><i class="fas fa-exclamation-triangle"></i> </a>
+                    <a title="Sil" class="btn btn-danger btn-circle" href="@Url.Action("Sil2", new { id = item.id })"><i class="fas fa-trash"></i> </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

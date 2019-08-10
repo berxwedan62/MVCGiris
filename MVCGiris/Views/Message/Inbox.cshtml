@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MVCGiris.Models.MesajModel>
+
+@{
+    ViewBag.Title = "Inbox";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Inbox</h2>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Okundu/Okunmadı</th>
+            <th>
+                @Html.DisplayNameFor(model => model.mesajAtan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.baslik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.icerik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tarih)
+            </th>
+            <th></th>
+            <th></th>
+
+
+        </tr>
+    </tbody>
+    <thead>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Okundumu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.baslik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.icerik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tarih)
+                </td>
+                <td>
+                    <button class="btnViev" type="button" style="height:35px; width:100px;  text-align:center;" data-message-id="@item.id" data-toggle="modal" data-target="#exampleModal">Görüntüle</button>
+                </td>
+                <td>
+                    @Html.ActionLink("Okundu olara işaretle", "Okundu", new { id = item.id }) |
+                    @Html.ActionLink("Sil", "Sil", new { id = item.id })
+                </td>
+            </tr>
+        }
+    </thead>
+</table>
+
+@* -- Javascript --*@
+<script src="~/Scripts/pageJS/page.inbox.js"></script>

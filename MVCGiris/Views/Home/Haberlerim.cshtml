@@ -1,0 +1,58 @@
+﻿@model List<MVCGiris.Models.HaberModel>
+
+@{
+    ViewBag.Title = "Haberlerim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Haberlerim</h2>
+<table class="table">
+    <thead>
+        <tr>    
+            <th>
+                Başlık
+            </th>
+            <th>
+                İçerik
+            </th>
+            <th>
+                Kategori
+            </th>
+            <th>
+                Tarih
+            </th>
+            <th>
+                Kontrol
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.baslik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.icerik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kategori)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tarih)
+            </td>
+            <td>
+                @*@Html.ActionLink("Güncelle", "HaberEkle", new { id = item.id })|
+                @Html.ActionLink("Sil", "Sil1", new { id = item.id })*@
+
+                <a title="Güncelle" class="btn btn-info btn-circle" href="@Url.Action("HaberEkle", new { id = item.id })"><i class="fas fa-info-circle"></i> </a>
+                <a title="Sil" class="btn btn-danger btn-circle" href="@Url.Action("Sil1", new { id = item.id })"><i class="fas fa-trash"></i> </a>
+
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

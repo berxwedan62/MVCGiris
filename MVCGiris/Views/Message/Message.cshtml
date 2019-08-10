@@ -1,0 +1,61 @@
+﻿@model MVCGiris.Models.MesajModel
+
+@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Message</h2>
+@using (Html.BeginForm("Message", "Message", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.mesajGelen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*<select class="js-example-basic-multiple" name="states[]">
+                    <option value="AL">Alabama</option>
+                    ...
+                    <option value="WY">Wyoming</option>
+                </select>*@
+                @Html.DropDownListFor(model => model.mesajGelen, ViewBag.alici as SelectList,new {@class="js-example-basic-multiple" })
+                @Html.ValidationMessageFor(model => model.mesajGelen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.baslik, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.baslik, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.baslik, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.icerik, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.icerik, new { style = "height: 222px; width:1500px; " })
+                @Html.ValidationMessageFor(model => model.icerik, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Gönder" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Script{
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+}
+
+
+

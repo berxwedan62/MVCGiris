@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MVCGiris.Models.HaberModel>
+
+@{
+    ViewBag.Title = "OnayBekleyen";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Onay Bekleyen Haberler</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.baslik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.icerik))
+                @Html.DisplayNameFor(model => model.icerik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.kategori)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.aktif)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tarih)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.baslik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.icerik)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.kategori)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.aktif)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tarih)
+                </td>
+                <td style="width:20%">
+                    @*@Html.ActionLink("Onayla", "Onayla", new { id = item.id }) |
+                    @Html.ActionLink("Güncelle", "HaberEkle", new { id = item.id }) |
+                    @Html.ActionLink("Sil", "Sil", new { id = item.id })*@
+
+
+                    <a title="Onayla" class="btn btn-success btn-circle" href="@Url.Action( "Onayla", new { id = item.id })"><i class="fas fa-check"></i> </a>
+                    <a title="Güncelle" class="btn btn-info btn-circle" href="@Url.Action("HaberEkle", new { id = item.id })"><i class="fas fa-info-circle"></i> </a>
+                    <a title="Sil" class="btn btn-danger btn-circle" href="@Url.Action("Sil", new { id = item.id })"><i class="fas fa-trash"></i> </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,32 @@
+﻿
+@*@{
+    Layout = null;
+}
+@model MVCGiris.Models.OrtakModel
+
+<!DOCTYPE html>
+
+
+
+@if (Session["id"] != null)
+{
+    <table>
+        @foreach (var item0 in Model.MesajModels)
+        {
+        
+            <tr>
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item0.baslik)</p>
+                </td>
+                <td>
+                    <p>@Html.DisplayFor(modelItem => item0.icerik)</p>
+                </td>
+
+            </tr>
+        
+        }
+
+    </table>
+}*@
+
+
